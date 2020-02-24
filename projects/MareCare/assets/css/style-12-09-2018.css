@@ -1,0 +1,328 @@
+* { padding: 0px; margin: 0px; outline: none; }
+
+html, body { width: 100%; height: 100%; }
+
+body { font-size: 13px; color: #4D4D4D; font-family: "Open Sans", sans-serif; }
+
+h1, h2, h3, h4, h5, h6 { margin-top: 0px; }
+
+p { line-height: 20px; }
+
+ul, li { list-style: none; }
+
+a, a:hover, a:focus { text-decoration: none; outline: none; }
+
+/* ---------- button css ------------ */
+.btn { background: #34436e; color: #fff; transition: all ease 0.9s; -webkit-transition: all ease 0.9s; }
+
+.btn i { font-weight: 700; position: relative; right: -5px; transition: all ease 0.9s; -webkit-transition: all ease 0.9s; }
+
+.btn.btnicon { padding-right: 20px; }
+
+.btn:hover, .btn:focus { color: #fff; }
+
+.btn:hover i { right: -15px; }
+
+.linktext { color: #34436e; position: relative; font-weight: 600; }
+
+.linktext:hover { color: #34436e; }
+
+/*------------------ form css --------------------------*/
+input::-webkit-input-placeholder { color: #3d3e3c; opacity: 1; }
+
+input:-moz-placeholder { color: #3d3e3c; opacity: 1; }
+
+input::-moz-placeholder { color: #3d3e3c; opacity: 1; }
+
+input:-ms-input-placeholder { color: #3d3e3c; opacity: 1; }
+
+input[type=text], input[type=password], input[type=email], input[type=phone], input[type=tel], input[type=number], select, textarea { appearance: none; -webkit-appearance: none; width: 100%; height: 33px; font-size: 14px; color: #3d3e3c; border: #34436e 1px solid; padding: 20px; resize: none; border-radius: 4px; -webkit-border-radius: 4px; }
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=phone]:focus, input[type=tel]:focus, input[type=number]:focus, select:focus, textarea:focus { border-color: #34436e; box-shadow: 0px 0px 10px #34436e; -moz-box-shadow: 0px 0px 10px #34436e; }
+
+textarea { height: 200px; }
+
+.star { color: #ff0000; }
+
+.serviceBlock.allNone { padding: 0px; border: none; }
+
+.map { width: 100%; display: inline-block; position: relative; }
+
+.map iframe { width: 100%; }
+
+/*------------------- heading css ----------------------*/
+.blockHeading, .pageHeading { width: 100%; color: #34436e; font-size: 30px; padding: 0px 0px 20px 0px; position: relative; }
+
+.blockHeading:after, .pageHeading:after { content: ''; width: 100px; height: 4px; background: #34436e; position: absolute; bottom: 0; left: 0; }
+
+.pageHeading { font-size: 40px; font-weight: 700; margin-bottom: 40px; }
+
+/* -------------- slick sliders next and prev arrow css ------------- */
+.slick-dots li button, .slick-next, .slick-prev, .slick-next:before, .slick-prev:before { color: #7499d0; font: bold 29px/1 FontAwesome; }
+
+.slick-next, .slick-prev { width: 40px; height: 40px; line-height: 35px; border-color: #7499d0; border-style: solid; border-width: 2px; text-align: center; z-index: 2; overflow: hidden; }
+
+.slick-prev.slick-disabled, .slick-next.slick-disabled { opacity: .25; }
+
+.slick-next:before { display: inline-block; content: "\f105"; }
+
+.slick-prev:before { display: inline-block; content: "\f104"; }
+
+.slick-next { right: 20px; }
+
+.slick-prev { left: 20px; }
+
+/* -------------- slick sliders dots css ------------- */
+.slick-dots { position: absolute; bottom: 20px; }
+.slick-dots li { width: 15px; height: 15px; border: #fff solid 2px; border-radius: 100%; -webkit-border-radius: 100%; overflow: hidden; }
+.slick-dots li button { width: 100%; height: 100%; padding: 0; font-size: 0; color: transparent; background: #fff; }
+.slick-dots li button:before { display: none; }
+.slick-dots li.slick-active button { background: #7499d0; }
+
+/*--------------------------- content wrap css -------------------*/
+.commntWrap { padding: 25px; display: inline-block; background-color: rgba(0, 0, 0, 0.03); }
+
+.commntWrap .usrPic { width: 300px; height: 200px; float: left; overflow: hidden; }
+
+.commntWrap .usrPic img { width: 100%; height: 100%; object-fit: cover; }
+
+.commntWrap .comntCntWrap { position: relative; overflow: hidden; padding: 0px 15px; }
+
+.commntWrap .actionArea { width: 100%; display: inline-block; margin-top: 0px; position: relative; /*border-top:rgba(0,0,0,0.1) solid 1px;*/ }
+
+.commntWrap h3 { display: block; font-size: 25px; color: #3e3e3e; padding-bottom: 15px; margin-bottom: 10px; position: relative; }
+
+.commntWrap h3:after { content: ''; width: 100px; height: 4px; background: #7499d0; position: absolute; bottom: 0; left: 0; }
+
+.commntWrap h3 a { color: #34436e; }
+
+.commntWrap a:hover { text-decoration: none; }
+
+.commntWrap p { font-size: 14px; }
+
+.commntWrap .commntTime { display: block; color: #757575; font-size: 16px; font-style: italic; margin-bottom: 10px; }
+
+.quote { position: relative; padding-left: 50px !important; }
+
+.quote:after { content: "\f10d"; position: absolute; z-index: 1; top: 0; left: 10px; font: normal normal normal 14px/1 FontAwesome; font-size: 30px; color: rgba(0, 0, 0, 0.2); }
+
+.innrpgBanner { width: 100%; height: 300px; float: left; background: #34436e; position: relative; overflow: hidden; }
+
+.innrpgBanner img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
+
+.innrpgBanner .contarea { width: 100%; position: absolute; bottom: 0; left: 0; z-index: 2; background: rgba(0, 0, 0, 0.5); color: #fff; padding: 20px 0px; }
+
+.innrpgBanner h3 { font-size: 36px; font-weight: 900; padding: 0px 0px 20px 0px; margin-bottom: 15px; position: relative; }
+
+.innrpgBanner h3:after { content: ''; width: 100px; height: 4px; background: #fff; position: absolute; bottom: 0; left: 0; }
+
+.innerpageArea { width: 100%; float: left; position: relative; padding: 50px 0px; min-height: 500px; }
+
+.innerpageArea p { margin-bottom: 20px; }
+
+.imgWrap { width: 400px; display: inline-block; position: relative; }
+
+.imgWrap img { width: 100%; height: auto; }
+
+.imgWrap.left { float: left; margin: 0px 20px 20px 0px; }
+
+.imgWrap.right { float: right; margin: 0px 0px 20px 20px; }
+
+ul.hedingBullet { width: 100%; display: inline-block; }
+
+ul.hedingBullet li { width: 50%; float: left; padding: 0px 20px 0px 0px; }
+
+ul.hedingBullet li label { width: 100%; display: inline-block; color: #34436e; font-size: 20px; margin: 0px 0px 5px 0px; }
+
+.sidenavbar * { transition: all ease 0.3s; -webkit-transition: all ease 0.3s; }
+
+.sidenavbar { width: 100%; display: inline-block; position: relative; }
+
+.sidenavbar ul { width: 100%; float: left; background: #7499d0; }
+
+.sidenavbar li { width: 100%; float: left; position: relative; }
+
+.sidenavbar li a { width: 100%; float: left; padding: 10px 15px; border-bottom: rgba(255, 255, 255, 0.5) solid 1px; color: #fff; }
+
+.sidenavbar li:hover, .sidenavbar li.current { background: #34436e; text-decoration: none; }
+
+.sidenavbar li:hover a, .sidenavbar li.current a { padding-left: 25px; }
+
+.sidenavbar li.current:after { content: ''; position: absolute; top: 50%; left: 10px; margin-top: -5px; width: 0px; height: 0px; border-style: solid; border-width: 5px; border-color: transparent transparent transparent #fff; }
+
+.serviceSection { width: 100%; display: inline-block; position: relative; }
+
+.serviceBlock { width: 100%; display: inline-block; position: relative; border: rgba(0, 0, 0, 0.05) solid 1px; padding: 20px; }
+
+.serviceBlock h4 { width: 100%; display: inline-block; color: #34436e; font-size: 17px; font-weight: 700; margin: 0px 0px 10px 0px; }
+
+/* ------------------- header css start ----------------------- */
+header { width: 100%; float: left; background: #fff; border-top: #34436e solid 4px; }
+
+.hdrTopStrp { width: 100%; padding: 12px 0px; line-height: 70px; vertical-align: middle; }
+
+.hdrBtmStrp { width: 100%; height: 47px; background-color: #34436e; }
+
+.logo { width: 200px; margin: 0; padding: 0; }
+.logo img { width: 100%; height: auto; }
+
+ul.hdrlink { display: inline-block; }
+ul.hdrlink li { display: inline-block; color: #7499d0; line-height: 25px; padding: 0px 10px; border-right: #7499d0 solid 1px; font-size: 16px; font-weight: 400; }
+ul.hdrlink li a { display: inline-block; color: #34436e; }
+ul.hdrlink li i { font-size: 25px; float: left; margin-right: 5px; }
+ul.hdrlink li span { display: inline-block; }
+ul.hdrlink li:last-child { border-right: none; padding-right: 0px; }
+
+ul.hdrlink.noborder li { border-right: none; }
+
+/* ------------------- headder css ended -----------------------*/
+/************* header lineMenu css start **************/
+.cssmenu.boxMenu * { transition: all ease 0.3s; -webkit-transition: all ease 0.2s; font-size: 14px; }
+
+.cssmenu.boxMenu > ul > li > a { padding: 17px 15px 16px; border-style: solid; border-color: rgba(0, 0, 0, 0.3); border-width: 0px 1px 0px 0px; }
+.cssmenu.boxMenu > ul > li:hover > a, .cssmenu.boxMenu > ul > li li.activeMenu a, .cssmenu.boxMenu > ul > li li.current-menu-item a { background-color: #7499d0; color: #fff; }
+.cssmenu.boxMenu > ul li { display: inline-block; }
+.cssmenu.boxMenu > ul li:first-child a { border-width: 0px 1px 0px 1px; }
+.cssmenu.boxMenu > ul li.has-sub > a { padding-right: 30px; }
+.cssmenu.boxMenu > ul li.has-sub > a:before { width: 0; height: 0; background: transparent; top: 20px; right: 10px; border-color: #fff transparent transparent transparent; border-style: solid; border-width: 6px; }
+.cssmenu.boxMenu > ul li.has-sub > a:after { display: none; }
+.cssmenu.boxMenu ul li a { font-weight: 700; text-transform: uppercase; color: #fff; }
+.cssmenu.boxMenu ul li:hover ul { opacity: 1; visibility: visible; top: 46px; }
+.cssmenu.boxMenu ul li ul { border-top: #7499d0 2px solid; background-color: #7499d0; opacity: 0; top: 46px; visibility: hidden; transition: all ease 0.7s; }
+.cssmenu.boxMenu ul li ul li:hover a { color: #fff; background-color: rgba(0, 0, 0, 0.5); }
+.cssmenu.boxMenu ul li ul li:hover ul { top: 0px; opacity: 1; }
+.cssmenu.boxMenu ul li ul li a { background-color: transparent; color: #fff; padding: 15px 15px; }
+.cssmenu.boxMenu ul li ul li ul { opacity: 0; }
+.cssmenu.boxMenu ul li.current-menu-item a { background-color: #7499d0; color: #fff; }
+
+/** mobile and tab css  **/
+.cssmenu.lineMenu.small-screen .menu-button:before { top: 10px; right: 8px; }
+.cssmenu.lineMenu.small-screen .menu-button:after { top: 16px; right: 8px; }
+.cssmenu.lineMenu.small-screen .menu-button.menu-opened:before { top: 16px !important; }
+
+/* responsive style css */
+@media only screen and (max-width: 1023px) { .cssmenu.lineMenu.small-screen .submenu-button { height: 44px; border-left: none; }
+  .cssmenu.lineMenu.small-screen ul { width: 280px; right: 0; }
+  .cssmenu.lineMenu.small-screen ul li ul { background: #f3f3f3; top: 0px !important; visibility: visible; opacity: 1; border-top: none; }
+  .cssmenu.lineMenu.small-screen ul:hover > a, .cssmenu.lineMenu.small-screen ul.activeMenu a { border-bottom: none; }
+  .cssmenu.lineMenu.small-screen > ul > li { padding: 0px 0px; }
+  .cssmenu.lineMenu.small-screen > ul > li > a { height: auto; padding: 15px 17px; } }
+/* reverse style */
+.cssmenu.reverse.lineMenu > ul > li.has-sub > a:before, .cssmenu.reverse.lineMenu > ul > li.has-sub > a:after { background-color: #fff; }
+.cssmenu.reverse.lineMenu > ul > li > a { color: #fff; }
+
+/* responsive style for reverse css */
+@media only screen and (max-width: 1023px) { .cssmenu.reverse.lineMenu > ul > li > a { color: #000; }
+  .cssmenu.reverse.lineMenu ul:hover > a, .cssmenu.reverse.lineMenu ul.activeMenu a { color: #E7AC00; }
+  .cssmenu.reverse.lineMenu .small-screen .menu-button.menu-opened:after, .cssmenu.reverse.lineMenu .small-screen .menu-button.menu-opened:before, .cssmenu.reverse.lineMenu .small-screen .menu-button:before { background-color: #fff; }
+  .cssmenu.reverse.lineMenu .small-screen .menu-button:after { border-top: 2px solid #fff; border-bottom: 2px solid #fff; } }
+/************* header lineMenu css closed **************/
+/* ------------------ fullscreen Banner css start -------------------- */
+.fullwidthBnnrCntnr { width: 100%; position: relative; overflow: hidden; }
+.fullwidthBnnrCntnr .fullwidthSlider .slick-slide { margin: 0px; max-height: 400px; }
+.fullwidthBnnrCntnr .fullwidthSlider .slick-slider, .fullwidthBnnrCntnr .fullwidthSlider .slick-list, .fullwidthBnnrCntnr .fullwidthSlider .slick-track { height: 100%; }
+.fullwidthBnnrCntnr .fullwidthSlider .bannerContainer { max-width: 88%; width: 100%; display: table; position: absolute; text-align: center; top: 0; right: 0; bottom: 0; left: 0; margin: auto; }
+.fullwidthBnnrCntnr .fullwidthSlider .bannerContainer > * { display: block; vertical-align: middle; }
+
+/* ------------------ fullscreen Banner css ended -------------------- */
+/*----------------------- home quick box css start ---------------------*/
+.hmQuickLinkRow { width: 100%; float: left; position: relative; padding: 30px 0px 50px; }
+
+.quickServiceBox { width: 100%; display: inline-block; position: relative; background: #7499d0; }
+
+.quickServiceBox .imageContent { width: 100%; height: 200px; position: relative; overflow: hidden; }
+
+.quickServiceBox .imageContent img { width: 100%; min-height: 200px; float: left; }
+
+.quickServiceBox .textContent { padding: 15px; position: relative; }
+
+.quickServiceBox .textContent .wrapCont { width: 100%; display: inline-block; }
+
+.quickServiceBox h3 { padding: 15px 15px; font-size: 20px; color: #fff; margin: 0px; background: #34436e; }
+
+.quickServiceBox .textContent p { font-size: 14px; color: #fff; margin-bottom: 15px; }
+
+.quickServiceBox .btnWrap { text-align: center; position: relative; bottom: -20px; }
+
+.quickServiceBox .btn { text-transform: uppercase; }
+
+.quickServiceBox .btn i { margin-left: 10px; }
+
+/*----------------------- home quick box css ended ---------------------*/
+/*--------------------- latest news area css start -------------------*/
+.latestNewsArea { width: 100%; float: left; position: relative; margin: 0px 0px 30px 0px; }
+
+.latestNewsArea .blockHeading { margin-bottom: 0px; }
+
+.latestNewsSlideArea .slick-slide { margin: 0px 15px; }
+
+.latestNewsSlideArea .slick-next, .latestNewsSlideArea .slick-prev { top: -30px; width: 20px; height: 30px; border: none; }
+
+.latestNewsSlideArea .slick-prev { left: auto; right: 60px; }
+
+.latestNewsSlideArea .slick-next:before, .latestNewsSlideArea .slick-prev:before { font: bold 44px/1px FontAwesome; color: #34436e; }
+
+/*--------------------- latest news area css ended -------------------*/
+/*------------------------- customer say css start -----------------------*/
+.customerSayArea { width: 100%; float: left; position: relative; margin: 0px 0px 40px 0px; }
+
+.customersaySlideArea .slick-next, .customersaySlideArea .slick-prev { top: -30px; width: 20px; height: 30px; border: none; }
+
+.customersaySlideArea .slick-prev { left: auto; right: 60px; }
+
+.customersaySlideArea .slick-next:before, .customersaySlideArea .slick-prev:before { font: bold 44px/1px FontAwesome; color: #34436e; }
+
+.customerSayArea .commntWrap .comntCntWrap { padding: 0px 0px; }
+
+.customerSayArea .commntWrap h1,
+.customerSayArea .commntWrap h2,
+.customerSayArea .commntWrap h3,
+.customerSayArea .commntWrap h4,
+.customerSayArea .commntWrap h5,
+.customerSayArea .commntWrap h6{ display:none; }
+
+.customerSayArea .commntWrap p { font-style: italic; }
+
+/*------------------------- customer say css ended ------------------------*/
+/*---------------------- support area csss start -------------------*/
+.supportArea { width: 100%; float: left; position: relative; margin: 0px 0px 60px 0px; }
+
+.supportBox { /*padding: 0px 30px;*/ text-align: center; }
+
+.supportBox .imgbox { width:100%; height:180px; display: inline-block; overflow: hidden; }
+
+.supportBox .imgbox img { width:100%; height:100%; object-fit: cover; }
+
+.supportBox h3 { width: 100%; display: inline-block; color: #34436e; font-size: 16px; margin-bottom: 15px; font-weight: 700; }
+
+/*---------------------- support area css ended -----------------*/
+/*--------------------- footer css start -----------------------*/
+.footerFullArea { width: 100%; float: left; position: relative; /* color */ background: #dadada; color: #666; }
+
+.footerFullArea a { color: #34436e; }
+
+.footerTopArea { width: 100%; float: left; position: relative; padding: 30px 0px; }
+
+.footerBottomArea { width: 100%; float: left; position: relative; text-align: center; padding: 10px 0px; /* color */ background: gray; color: #fff; font-size: 12px; }
+
+.footerFullArea .footerHeading { width: 100%; display: inline-block; text-transform: capitalize; font-weight: 600; margin: 0px 0px 20px 0px; padding: 0px 0px 0px 0px; /* color / font */ font-size: 18px; color: #7499d0; }
+
+.footerFullArea p { width: 100%; display: inline-block; line-height: 20px; /*  color / font */ }
+
+ul.openingHours { width: 100%; display: inline-block; }
+
+ul.openingHours li { width: 100%; display: inline-block; padding: 0px 0px 5px 0px; }
+
+ul.openingHours li a, ul.openingHours li i { color: #34436e; }
+
+ul.openingHours li i { margin-right: 10px; display: inline-block; /* color */ }
+
+ul.Address { width: 100%; display: inline-block; }
+
+ul.Address li { width: 100%; display: inline-block; margin: 0px 0px 10px 0px; }
+
+ul.Address li i { float: left; margin: 2px 10px 0px 0px; }
+
+ul.Address li > div { overflow: hidden; position: relative; }
+
+/*--------------------- footer css end --------------------------*/

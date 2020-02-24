@@ -1,0 +1,130 @@
+
+/************* header lineMenu css start **************/
+.cssmenu.boxMenu *{
+	transition:all ease 0.3s; -webkit-transition:all ease 0.2s; font-size:$mnu_font; 
+}
+.cssmenu.boxMenu{ 
+	>ul{
+		>li{
+			>a { padding:17px 15px 16px; border-style:solid; border-color:rgba(0,0,0,0.3); border-width:0px 1px 0px 0px; }
+			&:hover > a, li.activeMenu a, li.current-menu-item a{
+				background-color:$theme_color; color:$white;
+			}
+		}
+		li{
+			display:inline-block;
+		}
+		li:first-child{
+			a{
+				border-width:0px 1px 0px 1px;
+			}
+		}
+		li.has-sub{
+			>a{ 
+				padding-right:30px;
+				&:before{ width:0; height:0; background:transparent; top:20px; right:10px; border-color:$mnu_font_color transparent transparent transparent; border-style:solid; border-width:6px; }
+				&:after{ display:none; }
+			}
+			&:hover{
+			}
+		}
+	}
+	ul{
+		li{
+			a{
+				font-weight:700; text-transform:uppercase; color:$mnu_font_color;
+			}
+			&:hover{
+				ul{ opacity: 1; visibility: visible; top:46px; }
+			}
+			ul{ 
+				border-top:$theme_color 2px solid; background-color:$theme_color; opacity: 0; top:46px; visibility:hidden; transition: all ease 0.7s; 
+				li{
+					&:hover{
+						a{ color:$white; background-color:rgba(0,0,0,0.5); }
+						ul{ top:0px; opacity:1; }
+					}
+					a{ background-color:transparent; color:$mnu_font_color; padding: 15px 15px; }
+					ul{ opacity: 0; }
+				} 
+			}
+		}
+		li.current-menu-item a{
+			background-color:$theme_color; color:$white;
+		}
+	} 
+}
+/** mobile and tab css  **/
+.cssmenu.lineMenu.small-screen{
+	.menu-button{
+		&:before{ top: 10px; right: 8px; }
+		&:after{ top: 16px; right: 8px; }
+		&.menu-opened:before{ top: 16px !important; }
+	} 
+}
+/* responsive style css */
+@media #{$below-desktop-view} {
+	.cssmenu.lineMenu.small-screen{
+		.submenu-button{ height: 44px; border-left:none; }
+		ul{
+			width:280px; right:0;
+			li{
+				ul{ background:#f3f3f3; top:0px !important; visibility: visible; opacity:1; border-top:none; }
+			}
+			&:hover > a, &.activeMenu a{
+				border-bottom:none;
+			}
+		}
+		>ul{
+			>li{ 
+				padding:0px 0px; 
+				>a{
+					height: auto; padding: 15px 17px;
+				}
+			}
+		}
+	}
+}
+
+
+/* reverse style */
+.cssmenu.reverse.lineMenu{
+	>ul{
+		>li{
+			&.has-sub>a:before, &.has-sub>a:after{ background-color:#fff; }
+			>a{ color:#fff; }
+		}
+	}
+}
+/* responsive style for reverse css */
+@media #{$below-desktop-view} {
+
+	.cssmenu.reverse.lineMenu{
+		>ul{
+			>li{
+				>a{ color:#000; }
+			}
+		}
+		ul{
+			li{
+				a{  }
+			}
+			&:hover > a, &.activeMenu a{ color:#E7AC00; }
+		}
+		.small-screen{
+			.menu-button.menu-opened:after,
+			.menu-button.menu-opened:before,
+			.menu-button:before{
+				background-color:#fff;
+			}
+			.menu-button:after{
+				border-top: 2px solid #fff; border-bottom: 2px solid #fff;
+			}
+
+		}
+	}
+
+}
+/************* header lineMenu css closed **************/
+
+

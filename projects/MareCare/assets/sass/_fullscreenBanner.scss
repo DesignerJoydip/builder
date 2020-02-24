@@ -1,0 +1,21 @@
+/* ------------------ fullscreen Banner css start -------------------- */
+.fullscrnBnnrCntnr{ 
+	width:100%; height:100%; position:relative; overflow:hidden;
+
+	.slick-slide{ 
+		margin:0px; 
+	}
+	.slick-slider, .slick-list, .slick-track{
+		height:100%;
+	} 
+	.imgWrap{ 
+		width:100%; height:100%; background-repeat:no-repeat; background-size:cover; background-position:top center;
+
+		img{ 
+			opacity:0; 
+		}
+	}
+
+}
+
+/* ------------------ fullscreen Banner css ended -------------------- */

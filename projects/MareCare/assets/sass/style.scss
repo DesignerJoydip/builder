@@ -1,0 +1,172 @@
+@import 'variables';
+@import 'common';
+@import 'header';
+@import 'headerMenu';
+@import 'fullwidthBanner';
+
+
+
+/*----------------------- home quick box css start ---------------------*/
+.hmQuickLinkRow{
+  width:100%; float: left; position: relative; padding:30px 0px 50px;
+}
+.quickServiceBox{
+  width:100%; display:inline-block; position: relative; background:$theme_color;
+}
+.quickServiceBox .imageContent{ 
+  width:100%;height:200px; position:relative;  overflow:hidden; 
+} 
+.quickServiceBox .imageContent img{ 
+  width:100%; min-height:200px; float:left; 
+}
+.quickServiceBox .textContent{
+  padding:15px; position:relative;
+}
+.quickServiceBox .textContent .wrapCont{
+  width:100%; display:inline-block;
+}
+.quickServiceBox h3{
+  padding:15px 15px; font-size:20px; color:#fff; margin:0px; background:$theme_color_2;
+}
+.quickServiceBox .textContent p{
+  font-size:14px; color:#fff; margin-bottom:15px;
+}
+.quickServiceBox .btnWrap{
+  text-align: center; position: relative; bottom:-20px;
+}
+.quickServiceBox .btn{
+  text-transform:uppercase;
+}
+.quickServiceBox .btn i{
+  margin-left:10px;
+}
+
+/*----------------------- home quick box css ended ---------------------*/
+
+
+
+/*--------------------- latest news area css start -------------------*/
+.latestNewsArea{
+  width:100%; float: left; position: relative; margin:0px 0px 30px 0px;
+}
+.latestNewsArea .blockHeading{
+	margin-bottom:0px;
+}
+.latestNewsSlideArea .slick-slide {
+  margin: 0px 15px;
+}
+.latestNewsSlideArea .slick-next, .latestNewsSlideArea .slick-prev{
+	top:-30px; width:20px; height:30px; border:none;
+}
+.latestNewsSlideArea .slick-prev{
+	left:auto; right:60px;
+}
+.latestNewsSlideArea .slick-next:before, .latestNewsSlideArea .slick-prev:before{
+	font: bold 44px/1px FontAwesome; color:$theme_color_2;
+}
+/*--------------------- latest news area css ended -------------------*/
+
+
+
+/*------------------------- customer say css start -----------------------*/
+.customerSayArea{
+  width:100%; float: left; position: relative; margin:0px 0px 40px 0px;
+}
+.customersaySlideArea .slick-next, .customersaySlideArea .slick-prev{
+	top:-30px; width:20px; height:30px; border:none;
+}
+.customersaySlideArea .slick-prev{
+	left:auto; right:60px;
+}
+.customersaySlideArea .slick-next:before, .customersaySlideArea .slick-prev:before{
+	font: bold 44px/1px FontAwesome; color:$theme_color_2;
+}
+.customerSayArea .commntWrap .comntCntWrap{
+	padding:0px 0px;
+}
+.customerSayArea .commntWrap p{
+	font-style:italic;
+}
+/*------------------------- customer say css ended ------------------------*/
+
+
+
+/*---------------------- support area csss start -------------------*/
+.supportArea{
+  width:100%; float: left; position: relative; margin:0px 0px 60px 0px;
+}
+.supportBox{
+  padding:0px 30px; text-align:center;
+}
+.supportBox .imgbox{
+  display:inline-block; overflow:hidden;
+}
+.supportBox .imgbox img{
+  height:100px;
+}
+.supportBox h3{
+  width:100%; display:inline-block; color:$theme_color_2; font-size:16px; margin-bottom:15px; font-weight:700;
+}
+/*---------------------- support area css ended -----------------*/
+
+
+
+
+/*--------------------- footer css start -----------------------*/
+.footerFullArea{
+  width:100%; float:left; position:relative;
+  /* color */
+  background:#dadada; color:#666;
+}
+.footerFullArea a{
+	color:$theme_color_2;
+}
+.footerTopArea{
+  width:100%; float:left; position:relative; padding:30px 0px;
+}
+.footerBottomArea{
+  width:100%; float:left; position:relative; text-align:center; padding:10px 0px;
+  /* color */
+  background:gray; color:#fff; font-size:12px;
+}
+.footerFullArea .footerHeading{
+  width:100%; display:inline-block; text-transform:capitalize; font-weight:600; margin:0px 0px 20px 0px; padding:0px 0px 0px 0px;
+  /* color / font */
+  font-size:18px; color:$theme_color;
+}
+.footerFullArea p{
+  width:100%; display:inline-block; line-height:20px;
+  /*  color / font */
+}
+ul.openingHours{
+  width:100%; display:inline-block;
+}
+ul.openingHours li{
+  width:100%; display:inline-block; padding:0px 0px 5px 0px;
+}
+ul.openingHours li a, ul.openingHours li i{
+	color:$theme_color_2;
+}
+ul.openingHours li i{
+  margin-right:10px; display:inline-block;
+  /* color */
+}
+
+ul.Address{
+  width:100%; display:inline-block;
+}
+ul.Address li{
+  width:100%; display:inline-block; margin:0px 0px 10px 0px;
+}
+ul.Address li i{
+  float:left; margin:2px 10px 0px 0px;
+}
+ul.Address li > div{
+  overflow:hidden; position:relative;
+}
+/*--------------------- footer css end --------------------------*/
+
+
+
+
+
