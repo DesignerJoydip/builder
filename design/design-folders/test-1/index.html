@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>:test-1:</title>
+<!-- theme css -->
+<link href="css/test-1.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet"/>
+<!-- min script file -->
+<script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+
+<button id="add">Add Field</button>
+<div id="items">
+ <!--<div><input type="text" name="input[]"></div>-->
+</div>
+
+
+<script>
+            $(document).ready (function () {
+
+               //when the Add Field button is clicked
+$("#add").click(function (e) {
+ //Append a new row of code to the "#items" div
+ $("#items").append('<div><input name="input[]" type="text" /><button class="delete">Delete</button></div>'); });
+
+
+$("body").on("click", ".delete", function (e) {
+	$(this).parent("div").remove();
+});
+
+
+            }); // end ready
+
+
+
+        </script>
+
+
+
+</body>
+</html>

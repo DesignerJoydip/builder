@@ -1,0 +1,59 @@
+<?php include("include/header.php"); ?> 
+<?php if(isset($_GET['FLDNAME'])){ 
+$FLDNAME=$_GET['FLDNAME'];
+if(isset($FLDNAME)){ 
+?>
+
+<div class="form-group">
+
+<!-- upload button group open -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger btn-sm">Upload Files</button>
+  <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#upload_css_modal">Upload CSS Files</a></li>
+    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#upload_js_modal">Upload JS Files</a></li>
+    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#upload_image_modal">Upload Images</a></li>
+  </ul>
+</div>
+<!-- upload button group closed -->
+
+</div>
+
+
+
+
+
+<!-- modal -->
+<?php $FLDNAME=$_GET['FLDNAME']; ?>
+<?php include("modals/add_css_modal.php") ?>
+<?php include("modals/add_js_modal.php") ?>
+<?php include("modals/add_images_modal.php") ?>
+<?php include("modals/upload_css_modal.php") ?>
+<?php include("modals/upload_js_modal.php") ?>
+<?php include("modals/upload_image_modal.php") ?>
+
+
+
+<?php }else{
+header("location:index.php");	
+?>
+
+<?php } } ?>
+
+
+
+<script>
+$(document).ready(function(){
+	//alert();
+});
+</script>
+
+
+<?php include("include/footer.php"); ?>  
+
+
+

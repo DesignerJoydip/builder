@@ -1,0 +1,21 @@
+// auto load templates
+var FolderName = $(".foldername").html();
+//alert(FolderName);
+ function auto_load_css_file(){
+        $.ajax({
+          url: "modals/load-css-files.php",
+          cache: false,
+          success: function(data){
+             $("#load_css_files").html(data);
+          } 
+        });
+      }
+ 
+$(document).ready(function(){
+  auto_load_css_file(); //Call auto_load() function when DOM is Ready
+});
+ 
+//Refresh auto_load() function after 10000 milliseconds
+setInterval(auto_load_css_file,1000);	
+	
+	
