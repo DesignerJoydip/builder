@@ -1,0 +1,52 @@
+<?php $FLDNAME=$_GET['FLDNAME']; ?>
+
+<!-- Modal -->
+<div class="modal fade" id="upload_js_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Upload Javascript Files</h4>
+      </div>
+      <div class="modal-body" id="add_css_phpcode">
+      <!-- form open -->
+      <form id='uploadJs' action='modals/uploads_js_code.php' method='post' enctype='multipart/form-data'>
+       <div class="form-group">
+      <input type="hidden" name="project_name" value="<?php echo $FLDNAME; ?>" />
+ <input type='file' name='photo' class="form-control" />
+ </div>
+  <div class="form-group">
+ <button class="btn btn-success">Upload Javascript File</button>
+ </div>
+ </form>
+ 
+<p id='uploadJsmsg'></p>
+      <!-- form closed -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+//Adding a submit function to the form 
+$('#uploadJs').submit(function(e){
+	e.preventDefault();
+	$.ajax({
+		url: $(this).attr('action'),
+		type: "POST",
+		data: new FormData(this),
+		contentType: false,
+		cache: false,
+		processData: false,
+		success: function(data){
+			$('#uploadJsmsg').html(data);
+			$('#uploadJs input[type=file]').val('');
+		},
+		error: function(){}
+	});
+});
+</script>
+
