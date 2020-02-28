@@ -62,6 +62,31 @@ if(isset($FLDNAME)){
 <div class="design_veiw_file"></div>
 
 
+<textarea id="code" name="code">
+<div>
+  <div>
+    <!-- fdff -->
+  </div>
+</div>
+</textarea>
+
+<textarea id="code_for_css" name="code_for_css">
+<div>
+  <div>
+    <!-- fdff -->
+  </div>
+</div>
+</textarea>
+
+<textarea id="code_for_js" name="code_for_js">
+<div>
+  <div>
+    <!-- fdff -->
+  </div>
+</div>
+</textarea>
+
+
 
 <!-- modal -->
 <?php $FLDNAME=$_GET['FLDNAME']; ?>
@@ -98,6 +123,158 @@ $(document).ready(function(){
 	});
 		});
 });
+</script>
+
+
+<script>
+/*var dummy = {
+  attrs: {
+    color: ["red", "green", "blue", "purple", "white", "black", "yellow"],
+    size: ["large", "medium", "small"],
+    description: null
+  },
+  children: []
+};*/
+
+var tags = {
+  "!top": ["top"],
+  "!attrs": {
+    id: null,
+    class: []
+  },
+  top: {
+    attrs: {
+      lang: ["en", "de", "fr", "nl"],
+      freeform: null
+    },
+    children: ["animal", "plant"]
+  },
+  animal: {
+    attrs: {
+      name: null,
+      isduck: ["yes", "no"]
+    },
+    children: ["wings", "feet", "body", "head", "tail"]
+  },
+  plant: {
+    attrs: {name: null},
+    children: ["leaves", "stem", "flowers"]
+  },
+  //wings: dummy, feet: dummy, body: dummy, head: dummy, tail: dummy,
+  //leaves: dummy, stem: dummy, flowers: dummy
+};
+
+
+function completeAfter(cm, pred) {
+  var cur = cm.getCursor();
+  if (!pred || pred()) setTimeout(function() {
+    if (!cm.state.completionActive)
+      cm.showHint({completeSingle: false});
+  }, 100);
+  return CodeMirror.Pass;
+}
+
+function completeIfAfterLt(cm) {
+  return completeAfter(cm, function() {
+    var cur = cm.getCursor();
+    return cm.getRange(CodeMirror.Pos(cur.line, cur.ch - 1), cur) == "<";
+  });
+}
+
+function completeIfInTag(cm) {
+  return completeAfter(cm, function() {
+    var tok = cm.getTokenAt(cm.getCursor());
+    if (tok.type == "string" && (!/['"]/.test(tok.string.charAt(tok.string.length - 1)) || tok.string.length == 1)) return false;
+    var inner = CodeMirror.innerMode(cm.getMode(), tok.state).state;
+    return inner.tagName;
+  });
+}
+
+
+
+var nonEmpty = false;
+window.editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+  //mode: "text/javascript",
+  //mode: "text/html",
+  mode: "xml",
+  theme: 'erlang-dark',
+  styleActiveLine: true,
+  lineNumbers: true,
+  lineWrapping: true,
+  foldGutter: true,
+  matchTags: {bothTags: true},
+  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+  extraKeys: {
+          "'<'": completeAfter,
+          "'/'": completeIfAfterLt,
+          "' '": completeIfInTag,
+          "'='": completeIfInTag,
+          "Ctrl-Space": "autocomplete"
+        },
+        hintOptions: {schemaInfo: tags}
+});
+
+window.editor = CodeMirror.fromTextArea(document.getElementById("code_for_css"), {
+  mode: "text/css",
+  theme: 'erlang-dark',
+  autoCloseBrackets: true,
+  styleActiveLine: true,
+  lineNumbers: true,
+  lineWrapping: true,
+  foldGutter: true,
+  matchTags: {bothTags: true},
+  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+  extraKeys: {
+          "'<'": completeAfter,
+          "'/'": completeIfAfterLt,
+          "' '": completeIfInTag,
+          "'='": completeIfInTag,
+          "Ctrl-Space": "autocomplete"
+        },
+        hintOptions: {schemaInfo: tags}
+});
+
+
+window.editor = CodeMirror.fromTextArea(document.getElementById("code_for_js"), {
+  mode: "javascript",
+  theme: 'erlang-dark',
+  autoCloseBrackets: true,
+  styleActiveLine: true,
+  lineNumbers: true,
+  lineWrapping: true,
+  foldGutter: true,
+});
+
+
+
+
+/*
+var modeInput = document.getElementById("mode");
+var val = modeInput.value, m, mode, spec;
+if (m = /.+\.([^.]+)$/.exec(val)) {
+    var info = CodeMirror.findModeByExtension(m[1]);
+    if (info) {
+      mode = info.mode;
+      spec = info.mime;
+    }
+  } else if (/\//.test(val)) {
+    var info = CodeMirror.findModeByMIME(val);
+    if (info) {
+      mode = info.mode;
+      spec = val;
+    }
+  } else {
+    mode = spec = val;
+  }
+  if (mode) {
+    editor.setOption("mode", spec);
+    CodeMirror.autoLoadMode(editor, mode);
+  } else {
+    alert("Could not find a mode corresponding to " + val);
+  }
+*/
+
+
 </script>
 
 
