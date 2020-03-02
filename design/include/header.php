@@ -13,6 +13,8 @@
     <link href="../plugins/css/docs.css" rel="stylesheet">
     <link href="../plugins/css/slick.css" rel="stylesheet">
     <link href="../plugins/css/custom.css" rel="stylesheet">
+    <link href="plugins/css/design-custom.css" rel="stylesheet">
+
 
 
     
@@ -32,6 +34,7 @@
 
     <link rel="stylesheet" href="codemirror/codemirror.css">
     <link rel="stylesheet" href="codemirror/theme/erlang-dark.css">
+    <link rel="stylesheet" href="codemirror/theme/vibrant-ink.css">
     <link rel="stylesheet" href="codemirror/modify-codemirror.css">
     <link rel="stylesheet" href="codemirror/mode/fold/foldgutter.css" />
     <link rel="stylesheet" href="codemirror/mode/hint/show-hint.css">
@@ -54,6 +57,8 @@
     <script src="codemirror/mode/css/css.js"></script>
     <script src="codemirror/mode/css/css-hint.js"></script>
     <script src="codemirror/mode/closebrackets/closebrackets.js"></script>
+    <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script src="codemirror/mode/matchbrackets/matchbrackets.js"></script>
 
     
   </head>

@@ -7,6 +7,11 @@ $FLDNAME=$_GET['FLDNAME'];
 //session_start();
 $_SESSION['LoadedDesignFolderName'] = $FLDNAME;
 
+$design_template_dir = "design-folders\\";
+$design_folder_name = $_SESSION['LoadedDesignFolderName'];
+
+
+
 
 
 if(isset($FLDNAME)){ 
@@ -62,29 +67,49 @@ if(isset($FLDNAME)){
 <div class="design_veiw_file"></div>
 
 
-<textarea id="code" name="code">
-<div>
-  <div>
-    <!-- fdff -->
-  </div>
-</div>
-</textarea>
 
-<textarea id="code_for_css" name="code_for_css">
-<div>
-  <div>
-    <!-- fdff -->
-  </div>
+<div class="code-previewer-area">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-primary active"><input type="radio" name="options" id="html" autocomplete="off" checked> HTML</label>
+        <label class="btn btn-success"><input type="radio" name="options" id="css" autocomplete="off">CSS</label>
+        <label class="btn btn-danger"><input type="radio" name="options" id="jquery" autocomplete="off"> Jquery</label>
+    </div>
+    <div class="code-previewer-content-area">
+        <div data-tabContentName="html" class="code-previewer-content no-padding active">
+            <!-- html section start -->
+            <textarea class="form-control" id="design_html_code"><?php echo file_get_contents($design_template_dir.$design_folder_name.'\index.html'); ?></textarea>
+            <!-- html section ended -->
+        </div>
+        <div data-tabContentName="css" class="code-previewer-content no-padding">
+            <!-- css section start -->
+            <textarea id="code_for_css" name="code_for_css">
+              <?php echo file_get_contents($design_template_dir.$design_folder_name.'\css\\'.$design_folder_name.'.css'); ?>
+            </textarea>
+            <!-- css section ended -->
+        </div>
+        <div data-tabContentName="jquery" class="code-previewer-content no-padding">
+            <!-- jquery section start -->
+            <textarea id="code_for_js" name="code_for_js"></textarea>
+            <!-- jquery section ended -->
+        </div>
+    </div>
 </div>
+
+
+
+
+<!-- <textarea id="code_for_css" name="code_for_css">
+.class-name{
+  width:100%;
+  color:#ff0000;
+}
 </textarea>
 
 <textarea id="code_for_js" name="code_for_js">
-<div>
-  <div>
-    <!-- fdff -->
-  </div>
-</div>
-</textarea>
+function name(){
+  var variable = $('selector').val();
+}
+</textarea> -->
 
 
 
@@ -127,7 +152,8 @@ $(document).ready(function(){
 
 
 <script>
-/*var dummy = {
+
+	/*var dummy = {
   attrs: {
     color: ["red", "green", "blue", "purple", "white", "black", "yellow"],
     size: ["large", "medium", "small"],
@@ -193,11 +219,11 @@ function completeIfInTag(cm) {
 
 
 var nonEmpty = false;
-window.editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+window.editor_html = CodeMirror.fromTextArea(document.getElementById("design_html_code"), {
   //mode: "text/javascript",
-  //mode: "text/html",
-  mode: "xml",
-  theme: 'erlang-dark',
+  mode: "text/html",
+  //mode: "xml",
+  theme: 'vibrant-ink',
   styleActiveLine: true,
   lineNumbers: true,
   lineWrapping: true,
@@ -214,7 +240,8 @@ window.editor = CodeMirror.fromTextArea(document.getElementById("code"), {
         hintOptions: {schemaInfo: tags}
 });
 
-window.editor = CodeMirror.fromTextArea(document.getElementById("code_for_css"), {
+
+window.editor_css = CodeMirror.fromTextArea(document.getElementById("code_for_css"), {
   mode: "text/css",
   theme: 'erlang-dark',
   autoCloseBrackets: true,
@@ -223,19 +250,11 @@ window.editor = CodeMirror.fromTextArea(document.getElementById("code_for_css"),
   lineWrapping: true,
   foldGutter: true,
   matchTags: {bothTags: true},
-  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-  extraKeys: {
-          "'<'": completeAfter,
-          "'/'": completeIfAfterLt,
-          "' '": completeIfInTag,
-          "'='": completeIfInTag,
-          "Ctrl-Space": "autocomplete"
-        },
-        hintOptions: {schemaInfo: tags}
+  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
 });
 
 
-window.editor = CodeMirror.fromTextArea(document.getElementById("code_for_js"), {
+window.editor_js = CodeMirror.fromTextArea(document.getElementById("code_for_js"), {
   mode: "javascript",
   theme: 'erlang-dark',
   autoCloseBrackets: true,
@@ -243,6 +262,7 @@ window.editor = CodeMirror.fromTextArea(document.getElementById("code_for_js"), 
   lineNumbers: true,
   lineWrapping: true,
   foldGutter: true,
+  matchBrackets: true
 });
 
 

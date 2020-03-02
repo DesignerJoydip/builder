@@ -1,0 +1,18 @@
+.code-previewer-area{ width:100%; position: relative; margin-top:20px; }
+
+.code-previewer-area .tn-group-toggle{ position: relative; z-index: 1; }
+
+.code-previewer-area .code-previewer-content-area{ width:100%; display: inline-block; position: relative; margin-top: 10px; }
+
+.code-previewer-area .code-previewer-content{ width:100%; position: absolute; top:0px; left:0px; border:#b1b1b1 solid 1px; padding:20px; border-radius: 4px; background: #fff; overflow: hidden; height:auto; }
+
+.code-previewer-area .code-previewer-content.no-padding{ padding: 0px; }
+
+.code-previewer-area .code-previewer-content.active{ position: relative; z-index: 9; height:auto; display: inline-block; }
+
+
+.section-rows{ padding:30px 0px; position: relative; }
+
+.section-rows .section-row-heading{ font-weight:700; margin-bottom:20px; }
+
+.design-preview-section{ position: relative; }
