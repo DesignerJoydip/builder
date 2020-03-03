@@ -10,11 +10,11 @@ if(isset($_POST['folder_name'])){
 	
 if (!file_exists("design-folders/".$final_folder_name)) {
     mkdir("design-folders/".$final_folder_name, 0777, true);
-	mkdir("design-folders/".$final_folder_name."/css", 0777, true);
-	mkdir("design-folders/".$final_folder_name."/js", 0777, true);
-	mkdir("design-folders/".$final_folder_name."/images", 0777, true);
-	mkdir("design-folders/".$final_folder_name."/fonts", 0777, true);
-	copy("template/jquery.min.js", "design-folders/".$final_folder_name."/js/jquery.min.js");
+	mkdir("design-folders/".$final_folder_name."/assets/css", 0777, true);
+	mkdir("design-folders/".$final_folder_name."/assets/js", 0777, true);
+	mkdir("design-folders/".$final_folder_name."/assets/images", 0777, true);
+	mkdir("design-folders/".$final_folder_name."/assets/fonts", 0777, true);
+	copy("template/jquery.min.js", "design-folders/".$final_folder_name."/assets/js/jquery.min.js");
 	$indexFile = fopen("design-folders/".$final_folder_name."/index.html", "w") or die("Unable to open file!");
 	$indexFileContent = '<!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@ hi, this is your template.
 </html>';
 	fwrite($indexFile, $indexFileContent);
 	
-	$styleFile = fopen("design-folders/".$final_folder_name."/css/".$final_folder_name.".css", "w") or die("Unable to open file!");
+	$styleFile = fopen("design-folders/".$final_folder_name."/assets/css/".$final_folder_name.".css", "w") or die("Unable to open file!");
 	//$styleFileContent = 'body{ background:#ccc;}';
 	//fwrite($styleFile, $styleFileContent);
 	
@@ -95,8 +95,7 @@ class FlxZipArchive extends ZipArchive {
         $this->addDirDo($location, $name);
      } // EO addDir;
 
-    /**  Add Files & Dirs to archive;;;; @param string $location Real Location;  @param string $name Name in Archive;;;;;; @author Nicolas Heimann
-     * @access private   **/
+
     private function addDirDo($location, $name) {
         $name .= '/';
         $location .= '/';

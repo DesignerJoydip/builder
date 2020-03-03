@@ -64,9 +64,11 @@ if(isset($FLDNAME)){
 </div>
 
 
+
+<?php include("include/file-list.php"); ?>
+
+
 <div class="design_veiw_file"></div>
-
-
 
 <div class="code-previewer-area">
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -83,7 +85,7 @@ if(isset($FLDNAME)){
         <div data-tabContentName="css" class="code-previewer-content no-padding">
             <!-- css section start -->
             <textarea id="code_for_css" name="code_for_css">
-              <?php echo file_get_contents($design_template_dir.$design_folder_name.'\css\\'.$design_folder_name.'.css'); ?>
+              <?php echo file_get_contents($design_template_dir.$design_folder_name.'\assets\css\\'.$design_folder_name.'.css'); ?>
             </textarea>
             <!-- css section ended -->
         </div>
@@ -123,6 +125,8 @@ function name(){
 <?php include("modals/upload_image_modal.php") ?>
 <?php include("modals/load_files_modal.php") ?>
 <?php include("modals/add_tags_modal.php") ?>
+<?php //include("modals/edit-design-html.php") ?>
+<?php include("modals/create_new_file_modal.php") ?>
 
 
 <?php }else{

@@ -16,3 +16,5 @@
 .section-rows .section-row-heading{ font-weight:700; margin-bottom:20px; }
 
 .design-preview-section{ position: relative; }
+
+.site-cm-box{ z-index: 9; }

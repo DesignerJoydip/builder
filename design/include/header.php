@@ -9,11 +9,15 @@
     <title>Codestore</title>
 
     <!-- Bootstrap -->
+    <link href="../plugins/fonts/fontawesome/font-awesome.min.css" rel="stylesheet">
     <link href="../plugins/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/css/docs.css" rel="stylesheet">
     <link href="../plugins/css/slick.css" rel="stylesheet">
     <link href="../plugins/css/custom.css" rel="stylesheet">
     <link href="plugins/css/design-custom.css" rel="stylesheet">
+    <!-- <link href="https://www.jqueryscript.net/demo/Custom-Right-Click-Context-Menu-Plugin-jQuery-contextMenu/dist/css/contextMenu.min.css" rel="stylesheet"> -->
+
+    
 
 
 
@@ -59,7 +63,8 @@
     <script src="codemirror/mode/closebrackets/closebrackets.js"></script>
     <script src="codemirror/mode/javascript/javascript.js"></script>
     <script src="codemirror/mode/matchbrackets/matchbrackets.js"></script>
-
+    <!-- <script src="https://www.jqueryscript.net/demo/Custom-Right-Click-Context-Menu-Plugin-jQuery-contextMenu/dist/js/contextMenu.min.js"></script> -->
+    
     
   </head>
   <body>
