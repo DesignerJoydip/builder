@@ -281,5 +281,73 @@ die();
 ?>
 
 
+<?php
+if(isset($_POST['button_name_for_create'])){
+
+	//, $_POST['designmainsubfolder_name_for_create'], $_POST['destinationfolder_name_for_create'], $_POST['button_name_for_create'], $_POST['newdestinationfolder_name'], $_POST['newdestinationfile_name']
+
+	$button_name_for_create = $_POST['button_name_for_create'];
+	$designmainsubfolder_name_for_create = $_POST['designmainsubfolder_name_for_create'];
+	$destinationfolder_name_for_create = $_POST['destinationfolder_name_for_create'];
+	$newdestinationfolder_name = $_POST['newdestinationfolder_name'];
+	$newdestinationfile_name = $_POST['newdestinationfile_name'];
+
+	if($button_name_for_create == 'quick_add_folder'){
+
+		if($newdestinationfolder_name == ''){
+			echo '<div class="alert alert-danger">Please give a Folder name.</div>';
+		}else{
+			//echo "folder name:<br>";
+			$new_folder_name = preg_replace('#[ -]+#', '-', $newdestinationfolder_name);
+
+			$folder_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_folder_name;
+
+			if (!file_exists($folder_full_root)) {
+				echo '<div class="alert alert-success">Folder created</div>';
+				mkdir($folder_full_root, 0777, true);
+				?>
+				<script>$('#create_new_file_modal').modal('hide');</script>
+				<?php
+			}else{
+				echo '<div class="alert alert-danger">Folder name already esits</div>';
+			}	
+		}
+	}elseif($button_name_for_create == 'quick_add_file'){
+		echo "file name:<br>";
+		$new_file_name = preg_replace('#[ -]+#', '-', $newdestinationfile_name);
+
+		echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+		echo "<br>";
+
+		if($destinationfolder_name_for_create == 'assets'){
+
+			echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+
+		}else{
+			echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+			if (!file_exists($file_full_root)) {
+				echo '<div class="alert alert-success">file created</div>';
+				fopen($file_full_root.".".$destinationfolder_name_for_create, "w") or die("Unable to open file!");
+				?>
+				<script>//$('#create_new_file_modal').modal('hide');</script>
+				<?php
+			}else{
+				echo '<div class="alert alert-danger">file name already esits</div>';
+			}
+		}
+
+		
+	}
+
+
+
+	
+	
+
+die();
+}
+?>
+
+
 
 
