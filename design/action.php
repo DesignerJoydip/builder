@@ -291,6 +291,7 @@ if(isset($_POST['button_name_for_create'])){
 	$destinationfolder_name_for_create = $_POST['destinationfolder_name_for_create'];
 	$newdestinationfolder_name = $_POST['newdestinationfolder_name'];
 	$newdestinationfile_name = $_POST['newdestinationfile_name'];
+	$file_extensin_name = $_POST['file_extensin_name'];
 
 	if($button_name_for_create == 'quick_add_folder'){
 
@@ -322,6 +323,7 @@ if(isset($_POST['button_name_for_create'])){
 		if($destinationfolder_name_for_create == 'assets'){
 
 			echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+			fopen($file_full_root.".".$file_extensin_name, "w") or die("Unable to open file!");
 
 		}else{
 			echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;

@@ -80,6 +80,7 @@ $(".create-new-files-btn").click(function(){
 
     }else if(button_name_for_create == 'quick_add_file'){
 
+      
       if(newdestinationfile_name == ''){
         $("#file_folder_created_msg").html('<div class="alert alert-danger">Please Give a File Name</div>');
       }else{
@@ -89,12 +90,35 @@ $(".create-new-files-btn").click(function(){
           $("#file_folder_created_msg").html('<div class="alert alert-danger">Special Charecter are not allowed. Exclude (-) sign.</div>');
           $("#file_folder_created_msg").delay(2000).fadeOut(500);
         }else{
-          $.post('action.php', { button_name_for_create:button_name_for_create, designmainsubfolder_name_for_create:designmainsubfolder_name_for_create, destinationfolder_name_for_create:destinationfolder_name_for_create, newdestinationfolder_name:newdestinationfolder_name, newdestinationfile_name:newdestinationfile_name }, function(data){
+          if(! $(".file_extension_radio .file_extension:checked").is(':checked')){
+            $("#file_folder_created_msg").fadeIn(500);
+            $("#file_folder_created_msg").html('<div class="alert alert-danger">Plase select or type a extension</div>');
+            //$("#file_folder_created_msg").delay(2000).fadeOut(500);
+          }else{
+            var file_extensin_name = $(".file_extension_radio .file_extension:checked").val();
+            console.log(file_extensin_name);
+            if(file_extensin_name != 'html' && file_extensin_name != 'css' && file_extensin_name != 'js' && file_extensin_name != 'php'){
+              $("#file_folder_created_msg").html('<div class="alert alert-danger">Plase select or type a extension</div>');
+            }else{
+              /*$("#file_folder_created_msg").fadeIn(500);
+              $("#file_folder_created_msg").html(file_extensin_name);
+              $("#file_folder_created_msg").delay(2000).fadeOut(500);*/
+
+              $.post('action.php', { button_name_for_create:button_name_for_create, designmainsubfolder_name_for_create:designmainsubfolder_name_for_create, destinationfolder_name_for_create:destinationfolder_name_for_create, newdestinationfolder_name:newdestinationfolder_name, newdestinationfile_name:newdestinationfile_name, file_extensin_name:file_extensin_name }, function(data){
+                //console.log(button_name_for_create);
+                $("#file_folder_created_msg").fadeIn(500);
+                $("#file_folder_created_msg").html(data);
+                $("#file_folder_created_msg").delay(2000).fadeOut(500);
+              });
+            }
+            
+          }
+          /*$.post('action.php', { button_name_for_create:button_name_for_create, designmainsubfolder_name_for_create:designmainsubfolder_name_for_create, destinationfolder_name_for_create:destinationfolder_name_for_create, newdestinationfolder_name:newdestinationfolder_name, newdestinationfile_name:newdestinationfile_name }, function(data){
             //console.log(button_name_for_create);
             $("#file_folder_created_msg").fadeIn(500);
             $("#file_folder_created_msg").html(data);
             //$("#file_folder_created_msg").delay(2000).fadeOut(500);
-          });
+          });*/
         }
       }
 
