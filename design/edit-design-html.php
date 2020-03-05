@@ -126,7 +126,7 @@ function name(){
 <?php include("modals/load_files_modal.php") ?>
 <?php include("modals/add_tags_modal.php") ?>
 <?php //include("modals/edit-design-html.php") ?>
-<?php include("modals/create_new_file_modal.php") ?>
+<?php include("modals/create_new_folder_file_modal.php") ?>
 
 
 <?php }else{

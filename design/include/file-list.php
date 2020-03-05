@@ -9,7 +9,6 @@ function listFolderFiles($dir)
         if (!$fileInfo->isDot()) {
             //echo $fileInfo->getFilename();
             if (preg_match('/^.*\.([^.]+)$/D', $fileInfo)) {
-                //echo "$fileInfo\n";
                 //echo 'is a file';
                 // <a href="'. $dir."/".$fileInfo->getFilename().'"></a>
                 echo '<li data-designmainfoldername="'.$designMainFolder.'" data-designmainsubfolder="'.$dir.'" data-designsubfoldername="'.$fileInfo->getFilename().'"><img width="20px" src="https://image.flaticon.com/icons/svg/1001/1001259.svg">' . $fileInfo->getFilename();
@@ -18,8 +17,8 @@ function listFolderFiles($dir)
                 }
                 //echo ' ---- is a file';
                 echo '<div class="quick_action_box">
+                <span class="quick_btn" data-filetype="file_type" data-buttonname="quick_duplicate" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-clone" aria-hidden="true"></i></span>
                 <span class="quick_btn quick_delete"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                <span class="quick_btn quick_duplicate"><i class="fa fa-clone" aria-hidden="true"></i></span>
                 </div>
                 </li>';
             }else{
@@ -28,12 +27,14 @@ function listFolderFiles($dir)
                 if ($fileInfo->isDir()) {
                     listFolderFiles($fileInfo->getPathname());
                 }
-                echo '<span class="toggleArrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                <div class="quick_action_box">
-                <span class="quick_btn" data-buttonname="quick_add_folder" data-toggle="modal" data-target="#create_new_file_modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-                <span class="quick_btn" data-buttonname="quick_add_file" data-toggle="modal" data-target="#create_new_file_modal"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                $innerfileslist = scandir($fileInfo->getPathname());
+                $num_files = count($innerfileslist)-2;
+                if($num_files != 0){ echo '<span class="toggleArrow"><i class="fa fa-angle-down" aria-hidden="true"></i></span>'; }
+                echo '<div class="quick_action_box">
+                <span class="quick_btn" data-buttonname="quick_add_folder" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                <span class="quick_btn" data-buttonname="quick_add_file" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class="quick_btn" data-filetype="folder_type" data-buttonname="quick_duplicate" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-clone" aria-hidden="true"></i></span>
                 <span class="quick_btn" data-buttonname="quick_delete"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                <span class="quick_btn" data-buttonname="quick_duplicate"><i class="fa fa-clone" aria-hidden="true"></i></span>
                 </div>
                 </li>';
             }
@@ -106,11 +107,29 @@ echo "</div>";
         //console.log(button_name);
 
         if(button_name == "quick_add_folder"){
+            $(".create_new_folder_file_modal_title").html("Create a New Folder");
+            $(".create-new-files-btn").show();
             $(".add_new_folder_section").show();
             $(".add_new_file_section").hide();
+            $(".duplicate-folders-files-btn").hide();
+            $(".duplicate_folder_file_section").hide();
         }else if(button_name == "quick_add_file"){
+            $(".create_new_folder_file_modal_title").html("Create a New File");
+            $(".create-new-files-btn").show();
             $(".add_new_file_section").show();
             $(".add_new_folder_section").hide();
+            $(".duplicate-folders-files-btn").hide();
+            $(".duplicate_folder_file_section").hide();
+        }else if(button_name == "quick_duplicate"){
+            $(".create_new_folder_file_modal_title").html("Duplicate File or Folder");
+            $(".duplicate-folders-files-btn").show();
+            $(".duplicate_folder_file_section").show();
+            $(".create-new-files-btn").hide();
+            $(".add_new_folder_section").hide();
+            $(".add_new_file_section").hide();
+            var get_filetype=$(this).data("filetype");
+            $(".put_filetype_name").val(get_filetype);
+            //console.log(get_filetype);
         }
 
 
@@ -141,6 +160,10 @@ echo "</div>";
         var designmainsubfolder_name_for_create = $(".put_designmainsubfolder_name").val(get_designmainsubfolder);
         var destinationfolder_name_for_create = $(".put_destinationfolder_name").val(get_designsubfoldername);
         var button_name_for_create = button_name;
+        // for duplicate function
+        $(".put_old_destinationfolder_name_for_duplicate").val(get_designsubfoldername);
+        var only_file_name_for_duplicate = get_designsubfoldername.split('.')[0];
+        $(".new_designmainsubfolder_name_for_duplicate").val(only_file_name_for_duplicate);
 
     });
 

@@ -314,22 +314,23 @@ if(isset($_POST['button_name_for_create'])){
 			}	
 		}
 	}elseif($button_name_for_create == 'quick_add_file'){
-		echo "file name:<br>";
+		//echo "file name:<br>";
 		$new_file_name = preg_replace('#[ -]+#', '-', $newdestinationfile_name);
 
-		echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
-		echo "<br>";
+		$file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+		//echo "<br>";
 
-		if($destinationfolder_name_for_create == 'assets'){
+		if($destinationfolder_name_for_create != 'html' && $destinationfolder_name_for_create != 'css' && $destinationfolder_name_for_create != 'js' && $destinationfolder_name_for_create != 'php'){
 
-			echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+			//echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
+			echo '<div class="alert alert-success">file created</div>';
 			fopen($file_full_root.".".$file_extensin_name, "w") or die("Unable to open file!");
 
 		}else{
 			echo $file_full_root = $designmainsubfolder_name_for_create.'\\'.$destinationfolder_name_for_create.'\\'.$new_file_name;
 			if (!file_exists($file_full_root)) {
 				echo '<div class="alert alert-success">file created</div>';
-				fopen($file_full_root.".".$destinationfolder_name_for_create, "w") or die("Unable to open file!");
+				fopen($file_full_root.".".$file_extensin_name, "w") or die("Unable to open file!");
 				?>
 				<script>//$('#create_new_file_modal').modal('hide');</script>
 				<?php
@@ -341,12 +342,137 @@ if(isset($_POST['button_name_for_create'])){
 		
 	}
 
-
-
-	
-	
-
 die();
+}
+?>
+
+
+
+
+<?php
+if(isset($_POST['filetype_name_for_duplicate'])){
+
+	$filetype_name_for_duplicate = $_POST['filetype_name_for_duplicate'];
+	$designmainsubfolder_name_for_duplicate = $_POST['designmainsubfolder_name_for_duplicate'];
+	$old_destinationfolder_name_for_duplicate = $_POST['old_destinationfolder_name_for_duplicate'];
+	$new_designmainsubfolder_name_for_duplicate = $_POST['new_designmainsubfolder_name_for_duplicate'];
+	$overwrite_file_folder_name_for_duplicate = $_POST['overwrite_file_folder_name_for_duplicate'];
+	$overwrite_trim_file_folder_name_for_duplicate = preg_replace('#[ -]+#', '-', $overwrite_file_folder_name_for_duplicate);
+
+	
+
+	echo "extension:-----".$filetype_name_for_duplicate."<br>";
+	echo "desitination Folder:------".$designmainsubfolder_name_for_duplicate."<br>";
+	echo "old file/folder name:------".$old_destinationfolder_name_for_duplicate."<br>";
+	echo "New file/folder name:-------".$new_designmainsubfolder_name_for_duplicate."<br>";
+	
+
+	if (preg_match('/^.*\.([^.]+)$/D', $old_destinationfolder_name_for_duplicate)) {
+		//echo 'is a file<br>';
+		$only_file_name = strstr($old_destinationfolder_name_for_duplicate, '.', true);
+		//echo '-----------------';
+		$only_file_extension = pathinfo($old_destinationfolder_name_for_duplicate, PATHINFO_EXTENSION);
+
+		$duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate.'.'.$only_file_extension;
+
+		if($overwrite_file_folder_name_for_duplicate == ''){
+			echo $new_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate.'-copy.'.$only_file_extension;
+
+			if (!file_exists($new_duplicate_file_full_root)) {
+				echo '<div class="alert alert-success">Duplicate Done</div>';
+				fopen($new_duplicate_file_full_root, "w") or die("Unable to open file!");
+			}else{
+				echo '<div class="alert alert-danger">some error</div>';
+			}
+		}else{
+			echo $new_overwrite_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$overwrite_trim_file_folder_name_for_duplicate.'.'.$only_file_extension;
+			if (!file_exists($new_overwrite_duplicate_file_full_root)) {
+				echo '<div class="alert alert-success">Duplicate Done</div>';
+				fopen($new_overwrite_duplicate_file_full_root, "w") or die("Unable to open file!");
+			}else{
+				echo '<div class="alert alert-danger">some error</div>';
+			}
+		}
+
+		
+	}else{
+		if($overwrite_file_folder_name_for_duplicate == ''){
+			//echo "is a folder<br>";
+			echo $old_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate;
+			echo "<br>";
+			echo $new_duplicate_folder_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate.'-copy';
+			//mkdir($new_duplicate_folder_full_root, 0777, true);
+
+			if (!file_exists($new_duplicate_folder_full_root)) {
+				echo '<div class="alert alert-success">Duplicate Done</div>';
+				function custom_copy($old_duplicate_file_full_root, $new_duplicate_folder_full_root) {  
+					// open the source directory 
+					$dir = opendir($old_duplicate_file_full_root);  
+				
+					// Make the destination directory if not exist 
+					@mkdir($new_duplicate_folder_full_root);  
+				
+					// Loop through the files in source directory 
+					foreach (scandir($old_duplicate_file_full_root) as $file) {  
+						if (( $file != '.' ) && ( $file != '..' )) {  
+							if ( is_dir($old_duplicate_file_full_root . '/' . $file) )  
+							{  
+								// Recursively calling custom copy function 
+								// for sub directory  
+								custom_copy($old_duplicate_file_full_root . '/' . $file, $new_duplicate_folder_full_root . '/' . $file);  
+							}  
+							else {  
+								copy($old_duplicate_file_full_root . '/' . $file, $new_duplicate_folder_full_root . '/' . $file);  
+							}  
+						}  
+					}  
+					closedir($dir); 
+				} 
+				custom_copy($old_duplicate_file_full_root, $new_duplicate_folder_full_root); 
+			}else{
+				echo '<div class="alert alert-danger">some error</div>';
+			}
+		}else{
+			echo $old_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate;
+			echo "<br>";
+			echo $new_overwrite_duplicate_folder_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$overwrite_trim_file_folder_name_for_duplicate;
+
+			if (!file_exists($new_overwrite_duplicate_folder_full_root)) {
+				echo '<div class="alert alert-success">Duplicate Done</div>';
+				function custom_copy($old_duplicate_file_full_root, $new_overwrite_duplicate_folder_full_root) {  
+					// open the source directory 
+					$dir = opendir($old_duplicate_file_full_root);  
+				
+					// Make the destination directory if not exist 
+					@mkdir($new_overwrite_duplicate_folder_full_root);  
+				
+					// Loop through the files in source directory 
+					foreach (scandir($old_duplicate_file_full_root) as $file) {  
+						if (( $file != '.' ) && ( $file != '..' )) {  
+							if ( is_dir($old_duplicate_file_full_root . '/' . $file) )  
+							{  
+								// Recursively calling custom copy function 
+								// for sub directory  
+								custom_copy($old_duplicate_file_full_root . '/' . $file, $new_overwrite_duplicate_folder_full_root . '/' . $file);  
+							}  
+							else {  
+								copy($old_duplicate_file_full_root . '/' . $file, $new_overwrite_duplicate_folder_full_root . '/' . $file);  
+							}  
+						}  
+					}  
+					closedir($dir); 
+				} 
+				custom_copy($old_duplicate_file_full_root, $new_overwrite_duplicate_folder_full_root);
+			}else{
+				echo '<div class="alert alert-danger">some error</div>';
+			}
+		}
+		
+
+
+
+	}
+	die();
 }
 ?>
 
