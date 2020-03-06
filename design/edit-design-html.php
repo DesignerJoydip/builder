@@ -67,6 +67,7 @@ if(isset($FLDNAME)){
 
 <?php include("include/file-list.php"); ?>
 
+<a  data-toggle="modal" data-target="#delete_final_folder_modal">dfdfdf</a>
 
 <div class="design_veiw_file"></div>
 
@@ -127,6 +128,8 @@ function name(){
 <?php include("modals/add_tags_modal.php") ?>
 <?php //include("modals/edit-design-html.php") ?>
 <?php include("modals/create_new_folder_file_modal.php") ?>
+<?php include("modals/delete_file_folder_modal.php") ?>
+<?php include("modals/delete_final_folder_modal.php") ?>
 
 
 <?php }else{

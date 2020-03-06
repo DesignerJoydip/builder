@@ -18,7 +18,7 @@ function listFolderFiles($dir)
                 //echo ' ---- is a file';
                 echo '<div class="quick_action_box">
                 <span class="quick_btn" data-filetype="file_type" data-buttonname="quick_duplicate" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-clone" aria-hidden="true"></i></span>
-                <span class="quick_btn quick_delete"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <span class="quick_btn" data-buttonname="quick_delete" data-toggle="modal" data-target="#delete_file_folder_modal"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                 </div>
                 </li>';
             }else{
@@ -34,7 +34,7 @@ function listFolderFiles($dir)
                 <span class="quick_btn" data-buttonname="quick_add_folder" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
                 <span class="quick_btn" data-buttonname="quick_add_file" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-plus" aria-hidden="true"></i></span>
                 <span class="quick_btn" data-filetype="folder_type" data-buttonname="quick_duplicate" data-toggle="modal" data-target="#create_new_folder_file_modal"><i class="fa fa-clone" aria-hidden="true"></i></span>
-                <span class="quick_btn" data-buttonname="quick_delete"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <span class="quick_btn" data-buttonname="quick_delete" data-toggle="modal" data-target="#delete_file_folder_modal"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                 </div>
                 </li>';
             }
@@ -104,7 +104,8 @@ echo "</div>";
    $(".quick_btn").click(function(){
         $(".file_extension_radio .file_extension").prop("checked", false);
         var button_name = $(this).data("buttonname");
-        //console.log(button_name);
+        console.log(button_name);
+        $("#file_folder_deleted_msg").hide();
 
         if(button_name == "quick_add_folder"){
             $(".create_new_folder_file_modal_title").html("Create a New Folder");
@@ -164,6 +165,7 @@ echo "</div>";
         $(".put_old_destinationfolder_name_for_duplicate").val(get_designsubfoldername);
         var only_file_name_for_duplicate = get_designsubfoldername.split('.')[0];
         $(".new_designmainsubfolder_name_for_duplicate").val(only_file_name_for_duplicate);
+        $(".overwrite_file_folder_name_for_duplicate").val(only_file_name_for_duplicate+'-copy');
 
     });
 

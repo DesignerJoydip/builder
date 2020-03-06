@@ -350,6 +350,7 @@ die();
 
 
 <?php
+
 if(isset($_POST['filetype_name_for_duplicate'])){
 
 	$filetype_name_for_duplicate = $_POST['filetype_name_for_duplicate'];
@@ -382,7 +383,7 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 				echo '<div class="alert alert-success">Duplicate Done</div>';
 				fopen($new_duplicate_file_full_root, "w") or die("Unable to open file!");
 			}else{
-				echo '<div class="alert alert-danger">some error</div>';
+				echo '<div class="alert alert-danger">File already Exist. You can Change the File Name</div>';
 			}
 		}else{
 			echo $new_overwrite_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$overwrite_trim_file_folder_name_for_duplicate.'.'.$only_file_extension;
@@ -390,7 +391,7 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 				echo '<div class="alert alert-success">Duplicate Done</div>';
 				fopen($new_overwrite_duplicate_file_full_root, "w") or die("Unable to open file!");
 			}else{
-				echo '<div class="alert alert-danger">some error</div>';
+				echo '<div class="alert alert-danger">File already Exist. You can Change the File Name</div>';
 			}
 		}
 
@@ -430,7 +431,7 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 				} 
 				custom_copy($old_duplicate_file_full_root, $new_duplicate_folder_full_root); 
 			}else{
-				echo '<div class="alert alert-danger">some error</div>';
+				echo '<div class="alert alert-danger">Folder already Exist. You can Change the folder Name</div>';
 			}
 		}else{
 			echo $old_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate;
@@ -464,7 +465,7 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 				} 
 				custom_copy($old_duplicate_file_full_root, $new_overwrite_duplicate_folder_full_root);
 			}else{
-				echo '<div class="alert alert-danger">some error</div>';
+				echo '<div class="alert alert-danger">Folder already Exist. You can Change the folder Name</div>';
 			}
 		}
 		
@@ -472,6 +473,55 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 
 
 	}
+	die();
+}
+?>
+
+
+
+
+<?php
+//button_name_for_delete:button_name_for_delete, designmainsubfolder_name_for_delete:designmainsubfolder_name_for_delete, destinationfolder_name_for_delete:destinationfolder_name_for_delete
+if(isset($_POST['button_name_for_delete'])){
+	$button_name_for_delete = $_POST['button_name_for_delete'];
+	$designmainsubfolder_name_for_delete = $_POST['designmainsubfolder_name_for_delete'];
+	$destinationfolder_name_for_delete = $_POST['destinationfolder_name_for_delete'];
+
+	//echo $designmainsubfolder_name_for_delete."\\".$destinationfolder_name_for_delete;
+	
+	if (preg_match('/^.*\.([^.]+)$/D', $destinationfolder_name_for_delete)) {
+		echo "Delete File";
+		unlink($designmainsubfolder_name_for_delete."\\".$destinationfolder_name_for_delete);
+		?>
+			<script>$('#delete_file_folder_modal').modal('hide');</script>
+		<?php
+	}else{
+		$innerfileslist = scandir($designmainsubfolder_name_for_delete."\\".$destinationfolder_name_for_delete);
+		$num_files = count($innerfileslist)-2;
+		if($num_files != 0){
+			echo '<div class="alert alert-danger">This Folder is not Empty.</div>';
+			//include("modals/file.php");
+			?>
+				<script>
+				//alert("hi");
+				$("#delete_final_folder_modal").delay(5000).modal('show');
+					
+					setTimeout(function(){
+						//$('#delete_file_folder_modal').modal('hide');
+					}, 3000);
+					$("#file_folder_deleted_final_msg").fadeIn(500);
+				</script>
+			<?php
+		}else{
+			echo "Delete Folder";
+			rmdir($designmainsubfolder_name_for_delete."\\".$destinationfolder_name_for_delete);
+			?>
+				<script>$('#delete_file_folder_modal').modal('hide');</script>
+			<?php
+		}
+		
+	}
+
 	die();
 }
 ?>
