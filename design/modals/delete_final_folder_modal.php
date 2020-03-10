@@ -8,13 +8,13 @@
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <input type="hidden" class="form-control button_name_for_create" value="">
-        <input type="hidden" class="form-control put_designmainsubfolder_name" value="">
-        <input type="hidden" class="form-control put_destinationfolder_name" value="">
+        <input type="text" class="form-control button_name_for_create" value="">
+        <input type="text" class="form-control put_designmainsubfolder_name" value="">
+        <input type="text" class="form-control put_destinationfolder_name" value="">
         <h4 class="modal-title text-center" style="margin-top:20px;">Delete File / Folder </h4>
         
         <h2 class="text-center">Finally Delete</h2>  
-        <div id="file_folder_deleted_final_msg" class="text-center"></div>
+        <div id="delete_file_folder_section" class="text-center"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

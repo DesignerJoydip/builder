@@ -502,15 +502,13 @@ if(isset($_POST['button_name_for_delete'])){
 			echo '<div class="alert alert-danger">This Folder is not Empty.</div>';
 			//include("modals/file.php");
 			?>
-				<script>
-				//alert("hi");
-				$("#delete_final_folder_modal").delay(5000).modal('show');
-					
-					setTimeout(function(){
-						//$('#delete_file_folder_modal').modal('hide');
-					}, 3000);
-					$("#file_folder_deleted_final_msg").fadeIn(500);
-				</script>
+			<script>
+			$('.delete_file_folder_section').hide();
+			$('.delete_final_folder_section').show();
+			$('.delete_final_folder_section').load('modals/final_delete_folder_modal_content.php');
+			</script>
+			
+				
 			<?php
 		}else{
 			echo "Delete Folder";
@@ -521,6 +519,40 @@ if(isset($_POST['button_name_for_delete'])){
 		}
 		
 	}
+
+	die();
+}
+?>
+
+
+<?php
+if(isset($_POST['get_designmainsubfolder_name_for_delete'])){
+	$get_designmainsubfolder_name_for_delete = $_POST['get_designmainsubfolder_name_for_delete'];
+	$get_destinationfolder_name_for_delete = $_POST['get_destinationfolder_name_for_delete'];
+	$dirPath = $get_designmainsubfolder_name_for_delete."\\".$get_destinationfolder_name_for_delete;
+
+	function deleteDirectory($dirPath) {
+		if (is_dir($dirPath)) {
+			$objects = scandir($dirPath);
+			foreach ($objects as $object) {
+				if ($object != "." && $object !="..") {
+					if (filetype($dirPath . DIRECTORY_SEPARATOR . $object) == "dir") {
+						deleteDirectory($dirPath . DIRECTORY_SEPARATOR . $object);
+					} else {
+						unlink($dirPath . DIRECTORY_SEPARATOR . $object);
+					}
+				}
+			}
+		reset($objects);
+		rmdir($dirPath);
+		}
+	}
+
+	deleteDirectory($dirPath);
+	
+	?>
+		<script>$('#delete_file_folder_modal').modal('hide');</script>
+	<?php
 
 	die();
 }
