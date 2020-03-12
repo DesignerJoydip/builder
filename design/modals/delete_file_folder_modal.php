@@ -12,14 +12,25 @@
         <input type="hidden" class="form-control put_designmainsubfolder_name" value="">
         <input type="hidden" class="form-control put_destinationfolder_name" value="">
         <h4 class="modal-title text-center" style="margin-top:20px;">Delete File / Folder </h4>
-        
-        <h2 class="text-center">Are you sure ?</h2>  
+        <h3 class="text-center put_destinationfolder_show"></h3>
+        <!-- delete_file_folder_section open -->
+        <div class="delete_file_folder_section">
+          <h2 class="text-center">Are you want to Delete ?</h2>  
+          <div id="file_folder_deleted_msg" class="text-center"></div>
+          <div class="text-center">
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-danger delete-file-folder-button">Yes</button>
+          </div>
+        </div>
+        <!-- delete_file_folder_section closed -->
+
+        <!-- delete_final_folder_section open -->
+        <div class="delete_final_folder_section" style="display: none;">
         <div id="file_folder_deleted_msg" class="text-center"></div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger delete-file-folder-button">Delete</button>
+          ffffffffffffffff
+        </div>
+        <!-- delete_final_folder_section closed -->
+
       </div>
     </div>
   </div>

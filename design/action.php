@@ -374,6 +374,8 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 		//echo '-----------------';
 		$only_file_extension = pathinfo($old_destinationfolder_name_for_duplicate, PATHINFO_EXTENSION);
 
+		echo $old_file_location_for_duplicate = $designmainsubfolder_name_for_duplicate.'\\'.$old_destinationfolder_name_for_duplicate;
+
 		$duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$new_designmainsubfolder_name_for_duplicate.'.'.$only_file_extension;
 
 		if($overwrite_file_folder_name_for_duplicate == ''){
@@ -381,15 +383,19 @@ if(isset($_POST['filetype_name_for_duplicate'])){
 
 			if (!file_exists($new_duplicate_file_full_root)) {
 				echo '<div class="alert alert-success">Duplicate Done</div>';
-				fopen($new_duplicate_file_full_root, "w") or die("Unable to open file!");
+				//fopen($new_duplicate_file_full_root, "w") or die("Unable to open file!");
+				//copy($old_file_location_for_duplicate, $duplicate_file_full_root);
+				copy($old_file_location_for_duplicate, $new_duplicate_file_full_root);
 			}else{
 				echo '<div class="alert alert-danger">File already Exist. You can Change the File Name</div>';
 			}
 		}else{
 			echo $new_overwrite_duplicate_file_full_root = $designmainsubfolder_name_for_duplicate.'\\'.$overwrite_trim_file_folder_name_for_duplicate.'.'.$only_file_extension;
 			if (!file_exists($new_overwrite_duplicate_file_full_root)) {
-				echo '<div class="alert alert-success">Duplicate Done</div>';
-				fopen($new_overwrite_duplicate_file_full_root, "w") or die("Unable to open file!");
+				echo '<div class="alert alert-success">Duplicate Doneee</div>';
+				//fopen($new_overwrite_duplicate_file_full_root, "w") or die("Unable to open file!");
+				copy($old_file_location_for_duplicate, $new_overwrite_duplicate_file_full_root);
+				//fopen($new_duplicate_file_full_root, "w") or die("Unable to open file!");
 			}else{
 				echo '<div class="alert alert-danger">File already Exist. You can Change the File Name</div>';
 			}
@@ -502,15 +508,13 @@ if(isset($_POST['button_name_for_delete'])){
 			echo '<div class="alert alert-danger">This Folder is not Empty.</div>';
 			//include("modals/file.php");
 			?>
-				<script>
-				//alert("hi");
-				$("#delete_final_folder_modal").delay(5000).modal('show');
-					
-					setTimeout(function(){
-						//$('#delete_file_folder_modal').modal('hide');
-					}, 3000);
-					$("#file_folder_deleted_final_msg").fadeIn(500);
-				</script>
+			<script>
+			$('.delete_file_folder_section').hide();
+			$('.delete_final_folder_section').show();
+			$('.delete_final_folder_section').load('modals/final_delete_folder_modal_content.php');
+			</script>
+			
+				
 			<?php
 		}else{
 			echo "Delete Folder";
@@ -521,6 +525,40 @@ if(isset($_POST['button_name_for_delete'])){
 		}
 		
 	}
+
+	die();
+}
+?>
+
+
+<?php
+if(isset($_POST['get_designmainsubfolder_name_for_delete'])){
+	$get_designmainsubfolder_name_for_delete = $_POST['get_designmainsubfolder_name_for_delete'];
+	$get_destinationfolder_name_for_delete = $_POST['get_destinationfolder_name_for_delete'];
+	$dirPath = $get_designmainsubfolder_name_for_delete."\\".$get_destinationfolder_name_for_delete;
+
+	function deleteDirectory($dirPath) {
+		if (is_dir($dirPath)) {
+			$objects = scandir($dirPath);
+			foreach ($objects as $object) {
+				if ($object != "." && $object !="..") {
+					if (filetype($dirPath . DIRECTORY_SEPARATOR . $object) == "dir") {
+						deleteDirectory($dirPath . DIRECTORY_SEPARATOR . $object);
+					} else {
+						unlink($dirPath . DIRECTORY_SEPARATOR . $object);
+					}
+				}
+			}
+		reset($objects);
+		rmdir($dirPath);
+		}
+	}
+
+	deleteDirectory($dirPath);
+	
+	?>
+		<script>$('#delete_file_folder_modal').modal('hide');</script>
+	<?php
 
 	die();
 }
