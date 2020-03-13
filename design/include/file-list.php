@@ -185,6 +185,12 @@ echo "</div>";
         var get_designsubfoldername = parent_list_selector.data('designsubfoldername');
         //console.log(get_designmainsubfolder+'|'+get_designsubfoldername);
         console.log(get_designmainsubfolder+'\\'+get_designsubfoldername);
+
+        $.post('open-file-action.php', { get_designmainsubfolder:get_designmainsubfolder, get_designsubfoldername:get_designsubfoldername }, function(data){
+            $("#design_file_load_section").fadeIn(500);
+            $("#design_file_load_section").html(data);
+            //$("#design_file_load_section").delay(2000).fadeOut(500);
+        });
        
     });
  

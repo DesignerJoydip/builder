@@ -267,9 +267,9 @@ die();
 <?php
 // edit code action
 if(isset($_POST['design_folder_name'], $_POST['design_file_name'], $_POST['design_file_code'])){
-$design_folder_name=$_POST['design_folder_name'];
-$design_file_name=$_POST['design_file_name'];
-$design_file_code=$_POST['design_file_code'];
+echo $design_folder_name=$_POST['design_folder_name'];
+echo $design_file_name=$_POST['design_file_name'];
+echo $design_file_code=$_POST['design_file_code'];
 
 file_put_contents($design_file_name, $design_file_code);
 
@@ -562,6 +562,27 @@ if(isset($_POST['get_designmainsubfolder_name_for_delete'])){
 
 	die();
 }
+?>
+
+
+
+<?php
+// new html edit code action
+if(isset($_POST['design_folder_name_new_edit'])){
+$design_folder_name_new_edit=$_POST['design_folder_name_new_edit'];
+$design_file_name_new_edit=$_POST['design_file_name_new_edit'];
+$design_file_code_new_edit=$_POST['design_file_code_new_edit'];
+$design_file_extension_new_edit=$_POST['design_file_extension_new_edit'];
+
+echo $file_full_path_for_new_edit = $design_folder_name_new_edit."\\".$design_file_name_new_edit;
+
+file_put_contents($file_full_path_for_new_edit, $design_file_code_new_edit);
+
+echo '<div class="alert alert-success">Code successfully updateduu.</div>';	
+die();
+
+}
+
 ?>
 
 
